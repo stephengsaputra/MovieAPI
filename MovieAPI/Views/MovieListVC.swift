@@ -25,7 +25,7 @@ class MovieListVC: UIViewController {
     // MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemGray
+        view.backgroundColor = .systemGray3
     }
 }
 
