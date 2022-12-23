@@ -11,7 +11,6 @@ class Utilities {
     
     static let JSON_DECODER: JSONDecoder = {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
         decoder.dateDecodingStrategy = .formatted(DATE_FORMATTER)
         return decoder
     }()

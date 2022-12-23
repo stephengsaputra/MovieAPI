@@ -17,6 +17,26 @@ class MovieListVC: UIViewController {
         
         super.viewDidLoad()
         configureUI()
+        
+        Service.shared.fetchSingleMovie(id: 76600) { result in
+            switch result {
+                case .success(let success):
+                    print(success.title)
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+            }
+        }
+        
+        Service.shared.fetchMovies(from: .nowPlaying) { result in
+            switch result {
+                case .success(let success):
+                success.results.compactMap({ movie in
+                    print(movie.title)
+                })
+                case .failure(let failure):
+                    print(failure.localizedDescription)
+            }
+        }
     }
     
     // MARK: - Selectors

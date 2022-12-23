@@ -20,7 +20,7 @@ class Service: MovieService {
     private init() {}
     
     private let API_KEY = "48508f69298754c551be1467eb56afac"
-    private let BASE_API_URL = "https://api.themoviedb.org/3/"
+    private let BASE_API_URL = "https://api.themoviedb.org/3"
     private let URL_SESSION = URLSession.shared
     private let JSON_DECODER = Utilities.JSON_DECODER
     
@@ -41,9 +41,7 @@ class Service: MovieService {
             return
         }
         
-        self.loadURLAndDecode(url: url, params: [
-            "append_to_response": "videos, credits"
-        ], completion: completion)
+        self.loadURLAndDecode(url: url, completion: completion)
     }
     
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
