@@ -12,7 +12,6 @@ class MovieDetailVM {
     let service = Service.shared
     var movieTitle = ""
     
-    // Kalo udah selesai 
     var onFetchSucceed: (() -> Void)?
     
     func getSingleMovie(id: Int) {
@@ -20,9 +19,7 @@ class MovieDetailVM {
         Service.shared.fetchSingleMovie(id: id) { [weak self] result in
             switch result {
                 case .success(let success):
-                    self?.movieTitle = success.title ?? ""
-                    print("ViewModel: \(self?.movieTitle)")
-                    self?.onFetchSucceed?()
+                    print(success.self)
                 case .failure(let failure):
                     print(failure.localizedDescription)
             }

@@ -9,7 +9,7 @@ import Foundation
 
 protocol MovieService {
     
-    func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
+    func fetchMovies(from endpoint: MovieListEndpoint, page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
     func fetchSingleMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ())
     func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
 }
@@ -17,6 +17,7 @@ protocol MovieService {
 class Service: MovieService {
     
     static let shared = Service()
+    
     private init() {}
     
     private let API_KEY = "48508f69298754c551be1467eb56afac"
@@ -24,14 +25,14 @@ class Service: MovieService {
     private let URL_SESSION = URLSession.shared
     private let JSON_DECODER = Utilities.JSON_DECODER
     
-    func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
+    func fetchMovies(from endpoint: MovieListEndpoint, page: Int, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
         
         guard let url = URL(string: "\(BASE_API_URL)/movie/\(endpoint.rawValue)") else {
             completion(.failure(.invalidEndpoint))
             return
         }
         
-        self.loadURLAndDecode(url: url, completion: completion)
+        self.loadURLAndDecode(url: url, params: ["page" : "\(page)"], completion: completion)
     }
     
     func fetchSingleMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ()) {
@@ -66,7 +67,9 @@ class Service: MovieService {
             return
         }
         
-        var queryItems = [URLQueryItem(name: "api_key", value: API_KEY)]
+        var queryItems = [
+            URLQueryItem(name: "api_key", value: API_KEY),
+        ]
         if let params = params {
             queryItems.append(contentsOf: params.map { URLQueryItem(name: $0.key, value: $0.value) })
         }

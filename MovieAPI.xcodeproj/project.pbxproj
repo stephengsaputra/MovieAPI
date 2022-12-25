@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB13A89E2958A0C600634700 /* MovieListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB13A89D2958A0C600634700 /* MovieListTableViewCell.swift */; };
 		DB231DB729574BB800217153 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB231DB629574BB800217153 /* MovieDetailVM.swift */; };
 		DB8FDCEB29558BFA00A41609 /* MovieListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FDCEA29558BFA00A41609 /* MovieListEndpoint.swift */; };
 		DB8FDCED29558C0D00A41609 /* MovieError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FDCEC29558C0D00A41609 /* MovieError.swift */; };
@@ -24,6 +25,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB13A89D2958A0C600634700 /* MovieListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewCell.swift; sourceTree = "<group>"; };
 		DB231DB629574BB800217153 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		DB8FDCEA29558BFA00A41609 /* MovieListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListEndpoint.swift; sourceTree = "<group>"; };
 		DB8FDCEC29558C0D00A41609 /* MovieError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieError.swift; sourceTree = "<group>"; };
@@ -150,6 +152,7 @@
 			children = (
 				DBC84BD029556DDC00DEFB3F /* MovieListVC.swift */,
 				DBDF08DA2956B5240097B9B4 /* MovieListVM.swift */,
+				DB13A89D2958A0C600634700 /* MovieListTableViewCell.swift */,
 			);
 			path = "Movie List";
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 				DB231DB729574BB800217153 /* MovieDetailVM.swift in Sources */,
 				DBA87EFA295575C500BFAD3D /* Movie.swift in Sources */,
 				DB8FDCED29558C0D00A41609 /* MovieError.swift in Sources */,
+				DB13A89E2958A0C600634700 /* MovieListTableViewCell.swift in Sources */,
 				DBC84BCF29556DDC00DEFB3F /* SceneDelegate.swift in Sources */,
 				DBA87EFD2955772D00BFAD3D /* MovieService.swift in Sources */,
 				DB8FDCEB29558BFA00A41609 /* MovieListEndpoint.swift in Sources */,

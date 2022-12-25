@@ -9,27 +9,18 @@ import UIKit
 import SnapKit
 
 class MovieListVC: UIViewController {
-
+    
     // MARK: - Properties
     internal lazy var movieListTableView: UITableView = {
         let tableView = UITableView()
+        tableView.register(MovieListTableViewCell.self, forCellReuseIdentifier: MovieListTableViewCell.identifier)
         tableView.delegate = self
         tableView.dataSource = self
         return tableView
     }()
     
-    let vm: MovieListProtocol
-    
-    init(vm: MovieListProtocol) {
-        
-        self.vm = vm
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        
-        fatalError("init(coder:) has not been implemented")
-    }
+    let vm = MovieListVM()
+    var page = 1
     
     // MARK: - Lifecycle
     override func viewDidLoad() {
@@ -37,25 +28,38 @@ class MovieListVC: UIViewController {
         super.viewDidLoad()
         configureUI()
         configureNavigation()
+        
+        bindViewModel()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         
         super.viewWillAppear(animated)
-        vm.getMovieList(from: .nowPlaying)
+        fetchMovie()
     }
     
     // MARK: - Selectors
+    func fetchMovie() {
+        vm.getMovieList(from: .popular, page: page)
+    }
     
+    func bindViewModel() {
+        
+        vm.onFetchSucceed = { [weak self] in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                self?.movieListTableView.reloadData()
+            }
+        }
+    }
     
     // MARK: - Helpers
     func configureUI() {
         
-        view.backgroundColor = .systemGray3
+        view.backgroundColor = .systemBackground
         
         view.addSubview(movieListTableView)
         movieListTableView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
         }
     }
     
@@ -72,12 +76,33 @@ class MovieListVC: UIViewController {
 extension MovieListVC: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return vm.movies.count
+        vm.movies.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(
+            withIdentifier: MovieListTableViewCell.identifier) as! MovieListTableViewCell
+        
+        cell.movie = self.vm.movies[indexPath.row]
+        cell.configureUI()
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        
+        let lastElement = vm.movies.count - 1
+            
+        if indexPath.row == lastElement {
+            self.page += 1
+            self.fetchMovie()
+            self.bindViewModel()
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        MovieDetailVM().getSingleMovie(id: vm.movies[indexPath.row].id)
     }
 }
