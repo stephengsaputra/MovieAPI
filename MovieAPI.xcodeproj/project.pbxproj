@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DB231DB729574BB800217153 /* MovieDetailVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB231DB629574BB800217153 /* MovieDetailVM.swift */; };
 		DB8FDCEB29558BFA00A41609 /* MovieListEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FDCEA29558BFA00A41609 /* MovieListEndpoint.swift */; };
 		DB8FDCED29558C0D00A41609 /* MovieError.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB8FDCEC29558C0D00A41609 /* MovieError.swift */; };
 		DBA87EFA295575C500BFAD3D /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBA87EF9295575C500BFAD3D /* Movie.swift */; };
@@ -18,9 +19,12 @@
 		DBC84BD429556DDC00DEFB3F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC84BD229556DDC00DEFB3F /* Main.storyboard */; };
 		DBC84BD629556DDD00DEFB3F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DBC84BD529556DDD00DEFB3F /* Assets.xcassets */; };
 		DBC84BD929556DDD00DEFB3F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DBC84BD729556DDD00DEFB3F /* LaunchScreen.storyboard */; };
+		DBDF08D82956B3950097B9B4 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = DBDF08D72956B3950097B9B4 /* SnapKit */; };
+		DBDF08DB2956B5240097B9B4 /* MovieListVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBDF08DA2956B5240097B9B4 /* MovieListVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DB231DB629574BB800217153 /* MovieDetailVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailVM.swift; sourceTree = "<group>"; };
 		DB8FDCEA29558BFA00A41609 /* MovieListEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListEndpoint.swift; sourceTree = "<group>"; };
 		DB8FDCEC29558C0D00A41609 /* MovieError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieError.swift; sourceTree = "<group>"; };
 		DBA87EF9295575C500BFAD3D /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
@@ -34,6 +38,7 @@
 		DBC84BD529556DDD00DEFB3F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DBC84BD829556DDD00DEFB3F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DBC84BDA29556DDD00DEFB3F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DBDF08DA2956B5240097B9B4 /* MovieListVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,12 +46,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DBDF08D82956B3950097B9B4 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		DB231DB529574BA600217153 /* Movie Detail */ = {
+			isa = PBXGroup;
+			children = (
+				DB231DB629574BB800217153 /* MovieDetailVM.swift */,
+			);
+			path = "Movie Detail";
+			sourceTree = "<group>";
+		};
 		DBA87EFB2955771F00BFAD3D /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -117,7 +131,8 @@
 		DBC84BE229556E0300DEFB3F /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				DBC84BD029556DDC00DEFB3F /* MovieListVC.swift */,
+				DB231DB529574BA600217153 /* Movie Detail */,
+				DBDF08D92956B50F0097B9B4 /* Movie List */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -128,6 +143,15 @@
 				DBA87EF9295575C500BFAD3D /* Movie.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		DBDF08D92956B50F0097B9B4 /* Movie List */ = {
+			isa = PBXGroup;
+			children = (
+				DBC84BD029556DDC00DEFB3F /* MovieListVC.swift */,
+				DBDF08DA2956B5240097B9B4 /* MovieListVM.swift */,
+			);
+			path = "Movie List";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +170,9 @@
 			dependencies = (
 			);
 			name = MovieAPI;
+			packageProductDependencies = (
+				DBDF08D72956B3950097B9B4 /* SnapKit */,
+			);
 			productName = MovieAPI;
 			productReference = DBC84BC929556DDC00DEFB3F /* MovieAPI.app */;
 			productType = "com.apple.product-type.application";
@@ -174,6 +201,9 @@
 				Base,
 			);
 			mainGroup = DBC84BC029556DDC00DEFB3F;
+			packageReferences = (
+				DBDF08D62956B3950097B9B4 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = DBC84BCA29556DDC00DEFB3F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,7 +233,9 @@
 			files = (
 				DBC84BD129556DDC00DEFB3F /* MovieListVC.swift in Sources */,
 				DBC84BCD29556DDC00DEFB3F /* AppDelegate.swift in Sources */,
+				DBDF08DB2956B5240097B9B4 /* MovieListVM.swift in Sources */,
 				DBA87F0129557A2E00BFAD3D /* Utilities.swift in Sources */,
+				DB231DB729574BB800217153 /* MovieDetailVM.swift in Sources */,
 				DBA87EFA295575C500BFAD3D /* Movie.swift in Sources */,
 				DB8FDCED29558C0D00A41609 /* MovieError.swift in Sources */,
 				DBC84BCF29556DDC00DEFB3F /* SceneDelegate.swift in Sources */,
@@ -426,6 +458,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DBDF08D62956B3950097B9B4 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DBDF08D72956B3950097B9B4 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DBDF08D62956B3950097B9B4 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DBC84BC129556DDC00DEFB3F /* Project object */;
 }

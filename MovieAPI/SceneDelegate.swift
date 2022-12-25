@@ -15,10 +15,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         guard (scene is UIWindowScene) else { return }
         
+        let viewModel: MovieListProtocol = MovieListVM()
+        
         let navigationController = UINavigationController()
         navigationController.isNavigationBarHidden = true
         
-        navigationController.pushViewController(MovieListVC(), animated: false)
+        navigationController.pushViewController(MovieListVC(vm: viewModel), animated: true)
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
     }
