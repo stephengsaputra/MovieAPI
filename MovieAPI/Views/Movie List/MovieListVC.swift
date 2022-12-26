@@ -59,7 +59,8 @@ class MovieListVC: UIViewController {
         
         view.addSubview(movieListTableView)
         movieListTableView.snp.makeConstraints { make in
-            make.edges.equalTo(view.safeAreaLayoutGuide.snp.edges)
+            make.horizontalEdges.bottom.equalToSuperview()
+            make.top.equalTo(view.safeAreaLayoutGuide.snp.top)
         }
     }
     

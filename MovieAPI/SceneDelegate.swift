@@ -16,7 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard (scene is UIWindowScene) else { return }
         
         let navigationController = UINavigationController()
-        navigationController.isNavigationBarHidden = true
         
         navigationController.pushViewController(MovieListVC(), animated: true)
         window?.rootViewController = navigationController

@@ -19,7 +19,7 @@ class MovieDetailVM {
         Service.shared.fetchSingleMovie(id: id) { [weak self] result in
             switch result {
                 case .success(let success):
-                    print(success.self)
+                    print("\(success.self) \n")
                 case .failure(let failure):
                     print(failure.localizedDescription)
             }
